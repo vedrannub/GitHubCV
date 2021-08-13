@@ -1,0 +1,52 @@
+<html>
+<head>
+    <title>Devices Shop</title>
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="/assets/vendor/bootstrap/bootstrap.min.css">
+    <script src="/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
+    <script src="/assets/vendor/popper.min.js"></script>
+    <script src="/assets/vendor/bootstrap/bootstrap.min.js"></script>
+</head>
+<body>
+<main>
+    <div class="container">
+        <ul class="list-group" >
+            <li th:each="d : ${deviceList}" class="list-group-item list-group-item-default">
+                <img th:src="${'/device/image/'+d.id}" class="img-responsive" style="width:100px">
+                <strong th:text="${d.name + ' (' + d.price + ')'}"></strong>
+                <span th:text="${d.manufacturer?.name}"></span>
+                <form th:action="@{/device/}" th:method="delete">
+                    <input name="deviceId" th:value="${d.id}" type="hidden">
+                    <button class="btn btn-warning">Delete</button>
+                </form>
+            </li>
+        </ul>
+        <form class="form" enctype="multipart/form-data" method="post" action="/device/add">
+            <div class="form-group">
+                <label for="deviceName">Name</label>
+                <input id="deviceName" type="deviceName" class="form-control" th:field="*{device.name}" name="name" placeholder="Enter name" required>
+            </div>
+            <div class="form-group">
+                <label for="devicePrice">Price</label>
+                <input id="devicePrice" class="form-control" type="number" th:field="*{device.price}" name="price" placeholder="Enter price" required>
+            </div>
+            <div class="form-group">
+                <label for="manufacturer">Manufacturer:</label>
+                <select class="form-control" th:field="*{device.manufacturer.id}" required>
+                    <option th:each="m : ${manufacturerList}" th:value="${m.id}" th:text="${m.name}">
+
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="image">Image</label>
+                <input id="image" class="form-control" type="file" name="image" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</main>
+
+</body>
+</html>
