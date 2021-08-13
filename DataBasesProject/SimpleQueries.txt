@@ -1,0 +1,40 @@
+--Prosek golovi na domasen tim , so cel da se doznae statistikata kolku doma dava golovi so ogled na kolku utakmici ima odigrano. Vo slucajov benfica ima izigrano 2 utakmici ima daeno 49 golovi , prosekot e 24 i slednata utakmica im e so Benfica-Hansa Rostock,Benfica-Porto
+
+create view prosekGoals as 
+select s.golovi/s.br_natprevari as prosekDoma,n.tim1,n.tim2 from tim as s,natprevar as n
+where s.ime = n.tim1
+group by golovi,br_natprevari,n.tim1,n.tim2,prosekDoma
+order by golovi desc;
+
+select * from prosekGoals;
+
+--Dokolku korisnikot saka da gi proveri lifcinjata kou shto mu se dobitni toj moze da go napravi toa so shto bi dobil koe id na lifce e i dali toa e dobitno
+
+create view dobitni as
+select s.id_lifce ,s.dobitno from lifce as s
+where s.dobitno is true
+group by id_lifce,dobitno
+order by id_lifce
+
+--Ne dobitni lifcinja koj shto gi ima korisnikot.
+
+create view nedobitni as
+select s.id_lifce ,s.dobitno from lifce as s
+where s.dobitno is false
+group by id_lifce,dobitno
+order by id_lifce
+
+-- Prebaruvanje na site timovi koi igraat vo odredena liga, vo konkretniot sluchaj stanuva za Premier League.
+
+create view timoviVoLiga as
+select ime,liga from ima
+where liga in (select liga from tabela where liga='Premier League');
+
+--Prebrojuvanje na dobitni tiketi kaj odreden User.
+
+create view brojNaTiketiDobitni as
+select count(*) , dobitno from lifce
+where dobitno = true
+group by dobitno;
+
+select * from brojNaTiketiDobitni;
