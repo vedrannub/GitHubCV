@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "67599946221",
+    "project_id": "mpiplab-1e130",
+    "storage_bucket": "mpiplab-1e130.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:67599946221:android:62ceaaf9885f41939097e4",
+        "android_client_info": {
+          "package_name": "com.example.mpip_lab4"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "67599946221-kd45qnddq4affts8jckeg1o9iqa6a6td.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDh0CeMBMlbguSjGghLxkUVTLyqqo2sBDc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "67599946221-kd45qnddq4affts8jckeg1o9iqa6a6td.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

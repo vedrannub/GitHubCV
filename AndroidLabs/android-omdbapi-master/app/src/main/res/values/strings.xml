@@ -1,0 +1,14 @@
+<resources>
+    <!-- App Title -->
+    <string name="app_name">Movies App</string>
+
+    <!-- EditText Control Hint -->
+    <string name="movie_name_text_hint">Enter Movie Name (Required)</string>
+    <string name="movie_year_text_hint">Enter Movie Name (Optional)</string>
+
+    <!-- Button Texts -->
+    <string name="search_button_text">Search Movie</string>
+
+    <!-- Constants -->
+    <string name="api_url">http://www.omdbapi.com/?plot=full&amp;r=json&amp;t=</string>
+</resources>

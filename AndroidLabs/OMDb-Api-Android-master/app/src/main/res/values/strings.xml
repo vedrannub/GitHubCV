@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Movie Query</string>
+    <string name="search_button">Search</string>
+    <string name="search_hint">Search by movie title</string>
+    <string name="search_type">movie</string>
+    <string name="default_poster">http://www.imdb.com/images/nopicture/medium/film.png</string>
+    <string name="snackbar_title_not_found">The movie title you entered was not found</string>
+    <string name="snackbar_title_empty">Please enter a movie title</string>
+    <string name="network_not_available">Network not available! Please connect to the Internet.</string>
+    <string name="title">Title</string>
+    <string name="example_title">Me Before You</string>
+    <string name="released">Released</string>
+    <string name="example_release">03 Jun 2016</string>
+    <string name="runtime">Runtime</string>
+    <string name="example_runtime">110 min</string>
+    <string name="director">Director</string>
+    <string name="example_director">Thea Sharrock</string>
+    <string name="Genre">Genre</string>
+    <string name="example_genre">Drama, Romance</string>
+    <string name="Writer">Writer(s)</string>
+    <string name="example_writer">Jojo Moyes (screenplay), Jojo Moyes (novel)</string>
+    <string name="actors">Actors</string>
+    <string name="example_actors">Sam Claflin, Vanessa Kirby, Emilia Clarke, Eileen Dunwoodie</string>
+    <string name="plot">Plot</string>
+    <string name="example_full_plot">"Lou Clark knows lots of things. She knows how many footsteps there are between the bus stop and home. She knows she likes working in The Buttered Bun tea shop and she knows she might not love her boyfriend Patrick. What Lou doesn't know is she's about to lose her job or that knowing what's coming is what keeps her sane. Will Traynor knows his motorcycle accident took away his desire to live. He knows everything feels very small and rather joyless now and he knows exactly how he's going to put a stop to that. What Will doesn't know is that Lou is about to burst into his world in a riot of color. And neither of them knows they're going to change each other for all time."</string>
+</resources>
