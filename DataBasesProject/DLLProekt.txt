@@ -1,0 +1,56 @@
+CREATE TABLE tabela
+(
+  liga varchar(50) NOT NULL,
+  bodovi INT NOT NULL,
+  broj_nad_dva INT NOT NULL,
+  broj_pod_dva INT NOT NULL,
+  PRIMARY KEY (liga)
+);
+
+CREATE TABLE tim
+(
+  br.natprevari INT NOT NULL,
+  ime varchar(50) NOT NULL,
+  golovi INT NOT NULL,
+  PRIMARY KEY (ime)
+);
+
+CREATE TABLE natprevar
+(
+  id_natprevar varchar(50) NOT NULL,
+  tim1 varchar(50) NOT NULL,
+  tim2 varchar(50) NOT NULL,
+  rezultat INT NOT NULL,
+  liga varchar(50) NOT NULL,
+  ime varchar(50) NOT NULL,
+  gostinime varchar(50) NOT NULL,
+  PRIMARY KEY (id_natprevar, ime, gostinime),
+  FOREIGN KEY (liga) REFERENCES tabela(liga),
+  FOREIGN KEY (ime) REFERENCES tim(ime),
+  FOREIGN KEY (gostinime) REFERENCES tim(ime)
+);
+
+CREATE TABLE lifce
+(
+  id_lifce INT NOT NULL,
+  PRIMARY KEY (id_lifce)
+);
+
+CREATE TABLE ima
+(
+  liga varchar(50) NOT NULL,
+  ime varchar(50) NOT NULL,
+  PRIMARY KEY (liga, ime),
+  FOREIGN KEY (liga) REFERENCES tabela(liga),
+  FOREIGN KEY (ime) REFERENCES tim(ime)
+);
+
+CREATE TABLE tip
+(
+  sistem INT NOT NULL,
+  fiks INT NOT NULL,
+  tip INT NOT NULL,
+  id_lifce INT NOT NULL,
+  PRIMARY KEY (id_lifce),
+  FOREIGN KEY (id_lifce) REFERENCES lifce(id_lifce)
+);

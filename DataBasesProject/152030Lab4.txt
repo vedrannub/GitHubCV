@@ -1,0 +1,23 @@
+--Dokolku korisnikot izbere odredeni granici za timovi, da kazheme vo slucajov izbira da mu se dadat timovite koi shto imaat poveke od 50 bodovi i poveke od 10 golovi toj ke dobie lista od timovite so gi ispolnuvaat ovie uslovi i vo koja liga igraat (Join Funkcija)
+
+create view goloviIbodovi as 
+select ima.liga,ima.ime from ima
+inner join tabela
+on ima.liga = tabela.liga
+inner join tim
+on ima.ime = tim.ime
+where bodovi > 60 and golovi > 20
+group by ima.liga,ima.ime;
+
+--Prebrojuvanje na dobitni tiketi kaj odreden User(Agregacija).
+
+create view brojNaTiketiDobitni as
+select count(*) , dobitno from lifce
+where dobitno = true
+group by dobitno;
+
+-- Prebaruvanje na site timovi koi igraat vo odredena liga, vo konkretniot sluchaj stanuva za Premier League(Subquery).
+
+create view timoviVoLiga as
+select ime,liga from ima
+where liga in (select liga from tabela where liga='Premier League');
