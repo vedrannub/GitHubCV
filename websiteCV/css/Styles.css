@@ -1,0 +1,65 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,900&display=swap');
+
+
+#demoB{
+    font-size: 24px;
+}
+
+hr{
+    visibility: hidden;
+}
+
+a{
+    color: #6C2EA6;
+}
+
+
+.fa-github, .fa-facebook-square , .fa-envelope, .fa-linkedin{
+
+    color: #6C2EA6;
+}
+
+.realMe , .skLL {
+    color: #FF6161;
+}
+
+body{
+
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 18px;
+
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+nav{
+    background: #C1A6FF;
+}
+
+.icons i{
+
+    font-size: 30px;
+}
+
+.typeText::after {
+    content: "|";
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% {opacity: 1;}
+    50% {opacity: 0;}
+}
+
+i:hover{
+
+    opacity: .5;
+}
+
+
+
