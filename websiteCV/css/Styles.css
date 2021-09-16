@@ -1,22 +1,65 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,900&display=swap');
-
-
 #demoB{
     font-size: 24px;
 }
 
+.pozadina{
+    position: relative;
+    background: coral;
+}
+
+
+.upperBox{
+
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: -5;
+    pointer-events: none;
+    max-width: 1152px;
+    width: 100%;
+    height: 665px;
+    background: url("/trianglce.svg") 0% 0% / contain no-repeat;
+}
+
+#footerche{
+    position: relative;
+    margin: 0;
+}
+
+
 hr{
     visibility: hidden;
+}
+
+.realMe{
+    color: #FF6161;
 }
 
 a{
     color: #6C2EA6;
 }
 
+.two span,h1,h2,h3,h4,h5,p,ul,li {
+    color: #ffffff;
+    opacity: 0;
+    transform: translate(200px, -100px) scale(2);
+    animation: ballDrop 0.5s forwards;
+}
+
+@keyframes ballDrop {
+    60% {
+        transform: translate(0, 20px) rotate(-180deg) scale(.5);
+    }
+
+    100% {
+        transform: translate(0) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+}
+
 
 .fa-github, .fa-facebook-square , .fa-envelope, .fa-linkedin{
-
     color: #6C2EA6;
 }
 
@@ -26,8 +69,7 @@ a{
 
 body{
 
-    font-family: 'Roboto', sans-serif;
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Open Sans', sans-serif;
     font-size: 18px;
 
 }
@@ -37,8 +79,34 @@ body{
     margin: 0 auto;
 }
 
+body > div.container > div:nth-child(6) > div:nth-child(2) > h4:nth-child(13) > a:hover{
+    background: black;
+}
+
+.slika1{
+
+}
+
 nav{
     background: #C1A6FF;
+}
+
+#vecoSlika{
+
+    margin-top: 30px;
+}
+
+body > div > div.row.footer.rounded{
+    font-size: 10px;
+}
+
+footer{
+    background: #FF6161 ;
+    position: relative;
+}
+
+#footerche{
+    font-size: 11.5px;
 }
 
 .icons i{
