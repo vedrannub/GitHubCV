@@ -1,0 +1,30 @@
+﻿@model WebApplicationStudentsMVC.Models.StudentViewModel
+
+@{
+    ViewBag.Title = "StudentView";
+}
+
+<div class="@(Model.Subjects.Any() ? "d-none" : "")">
+    <span>Student has no subjects yet.</span>
+</div>
+
+<div style="margin: 50px" class="@(Model.Subjects.Any() ? "" : "d-none")">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Subject Name</th>
+                <th>Grade</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var subject in Model.Subjects)
+            {
+                <tr>
+                    <td>@subject.Name</td>
+                    <td>@(subject.Grade.HasValue ? subject.Grade : "-")</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>

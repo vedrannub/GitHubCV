@@ -1,0 +1,55 @@
+﻿@model WebApplicationStudentsMVC.Models.ProfessorViewModel
+
+@{
+    ViewBag.Title = "ProfessortView";
+}
+
+<span class=" @(Model.ProfessorSubjects.Any()?"d-none" : "")">You do not have any subjects assigned yet.</span>
+<div class="studentServiceContainer @(Model.ProfessorSubjects.Any()?"" : "d-none")">
+    <div style="width: 20%;"></div>
+    <div style="width: 70%">
+
+        @using (Html.BeginForm("SelectSubject", "Professor"))
+        {
+
+            <label> Select a Subject</label>
+            @Html.HiddenFor(x => x.LoggedInProfessorId)
+            @Html.DropDownListFor(x => x.SelectedSubjectId, Model.ProfessorSubjects.Select(y => new SelectListItem { Value = y.Id.ToString(), Text = y.Name }), "Select One", new { onchange = "submit()" });
+        }
+
+        <div class="@(string.IsNullOrEmpty(Model.SelectedSubjectId)?"d-none":"")">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var student in Model.SubjectStudents)
+                    {
+                    <tr>
+                        <td>@student.Name</td>
+                        <td>@(student.Grade.HasValue ? student.Grade : "-")</td>
+                    </tr>
+                    }
+                </tbody>
+
+            </table>
+
+
+            @using (Html.BeginForm("AddGradeToStudent", "Professor"))
+            {
+
+                <label> Select a Student</label>
+                @Html.HiddenFor(x => x.SelectedSubjectId);
+                @Html.HiddenFor(x => x.LoggedInProfessorId);
+                @Html.DropDownListFor(x => x.SelectedStudentsForAddingGradeId, Model.StudentsForAddingGrade.Select(y => new SelectListItem { Value = y.Id.ToString(), Text = y.Name }), "Select One");
+                @Html.TextBoxFor(x => x.SelectedStudentsGradeToSave, new { @type = "number" })
+                <input class="btn btn-primary" value="Save Grade" type="submit" />
+            }
+
+        </div>
+
+    </div>
+</div>

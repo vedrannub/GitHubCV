@@ -1,0 +1,103 @@
+﻿@model WebApplicationStudentsMVC.Models.StudentServiceViewModel
+
+@{
+    ViewBag.Title = "StudentService";
+
+}
+
+<script>
+
+</script>
+
+<div class="studentServiceContainer">
+    <div style="width: 50%; padding-right:25px; border-right: 1px solid gray; margin-right:25px">
+
+        @using (Html.BeginForm("SelectProfessor", "StudentService"))
+        {
+
+            <label> Select a Professor</label>
+            @Html.DropDownListFor(x => x.SelectedProfessorId, Model.Professors
+            .Select(y => new SelectListItem { Value = y.Id.ToString(), Text = y.Name })
+            , "Select One"
+            , new { onchange = "submit()" });
+        }
+
+
+        <div class="@(string.IsNullOrEmpty(Model.SelectedProfessorId)?"d-none":"")">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var subject in Model.SelectedProfessorSubjects)
+                    {
+                        <tr>
+                            <td>@subject.Id</td>
+                            <td>@subject.Name</td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+
+
+            @using (Html.BeginForm("AddSubjectToProfessor", "StudentService"))
+            {
+
+                <label> Select a Subject</label>
+                @Html.HiddenFor(x => x.SelectedProfessorId);
+                @Html.DropDownListFor(x => x.SelectedProfessorSubjectId, Model.FreeSubjects.Select(y => new SelectListItem { Value = y.Id.ToString(), Text = y.Name }), "Select One");
+                <input class="btn btn-primary" value="Add Subject" type="submit" />
+            }
+
+        </div>
+
+    </div>
+    <div style="width: 50%">
+
+        @using (Html.BeginForm("SelectSubject", "StudentService"))
+        {
+
+            <label> Select a Subject</label>
+            @Html.HiddenFor(x => x.SelectedProfessorId)
+            @Html.DropDownListFor(x => x.SelectedSubjectId, Model.Subjects.Select(y => new SelectListItem { Value = y.Id.ToString(), Text = y.Name }), "Select One", new { onchange = "submit()" });
+        }
+
+        <div class="@(string.IsNullOrEmpty(Model.SelectedSubjectId)?"d-none":"")">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var student in Model.SelectedSubjectStudents)
+                    {
+                        <tr>
+                            <td>@student.Id</td>
+                            <td>@student.Name</td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+
+
+            @using (Html.BeginForm("AddStudentToSubject", "StudentService"))
+            {
+
+                <label> Select a Student</label>
+                @Html.HiddenFor(x => x.SelectedSubjectId);
+                @Html.HiddenFor(x => x.SelectedProfessorId);
+                @Html.DropDownListFor(x => x.SelectedSubjectStudentId, Model.SelectedSubjectNotAssingedStudents.Select(y => new SelectListItem { Value = y.Id.ToString(), Text = y.Name }), "Select One");
+                <input class="btn btn-primary" value="Add Student" type="submit" />
+            }
+
+        </div>
+
+    </div>
+</div>
